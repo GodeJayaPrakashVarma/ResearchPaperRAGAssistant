@@ -5,8 +5,6 @@ from langchain_core.documents import Document
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.retrievers import BM25Retriever
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-import hashlib
-from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_classic.retrievers import EnsembleRetriever, ContextualCompressionRetriever
@@ -17,11 +15,22 @@ from langchain.tools import tool
 from langchain.agents import create_agent
 from langchain_tavily import TavilySearch
 import gradio as gr
+import yaml
 
 load_dotenv()
 
+CHUNK_SIZE_TOKENS = 650
+CHUNK_OVERLAP_TOKENS = 100
+
 CANDIDATE_K = 20 # how many candidates EACH retriever (BM25, vector) contributes before fusion
-FINAL_K = 4 # how many fused results actually get passed to the LLM
+FINAL_K = 2 # how many fused results actually get passed to the LLM
+PROMPT_VERSION = "v1.1"  # refer prompts.yaml for the active system prompt version or create a new version.
+
+api_key= os.getenv('GEMINI_API_KEY')
+model = init_chat_model(
+    "google_genai:gemini-3.5-flash-lite",
+    api_key=api_key,
+)
 
 def chunk_id(doc):
     source = doc.metadata.get("source", "")
@@ -50,8 +59,8 @@ def build_vector_store():
     loader = PyPDFLoader(file_path)
     documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=650,
-        chunk_overlap=100
+        chunk_size=CHUNK_SIZE_TOKENS,
+        chunk_overlap=CHUNK_OVERLAP_TOKENS
     )
 
     all_splits = text_splitter.split_documents(documents)
@@ -112,12 +121,6 @@ vector_store = build_vector_store()
 hybrid_retriever = build_hybrid_retriever(vector_store)
 final_retriever = build_reranking_retriever(hybrid_retriever, FINAL_K)
 
-api_key= os.getenv('GEMINI_API_KEY')
-model = init_chat_model(
-    "google_genai:gemini-2.5-flash",
-    api_key=api_key,
-)
-
 @tool
 def retrieve_from_pdf(query: str) -> str:
     """Retrieve information from the AI in Science research paper."""
@@ -142,7 +145,7 @@ def retrieve_from_pdf(query: str) -> str:
 
     docs_content = ""
     # Enumerate the docs and create clear citation tags
-    for i, doc in enumerate(retrieved_docs, start=1):
+    for i, doc in enumerate(relevant_docs, start=1):
         # PyPDFLoader pages are 0-indexed, so we add 1 for human readability
         page_num = doc.metadata.get("page", 0) + 1 
         
@@ -160,17 +163,18 @@ web_search_tool = TavilySearch(
     tavily_api_key=tavily_api_key
 )
 
-system_prompt = """You are a rigorous, fact-based research assistant for the "AI in Science" paper. You have access to two tools:
-1. retrieve_from_pdf: Use this to find information within the paper.
-2. TavilySearch: Use this for recent events or external facts ONLY if the user explicitly asks for web info.
+def load_system_prompt(version: str, file_path: str = "prompts.yaml") -> str:
+    """Loads a specific version of the system prompt from a YAML file."""
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+        return data["versions"][version]["text"]
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Could not find the prompt file: {file_path}")
+    except KeyError:
+        raise ValueError(f"Prompt version '{version}' not found in {file_path}")
 
-CRITICAL RULES FOR PDF QUESTIONS:
-1. STRICT CITATION: For every factual claim you make based on the PDF, you MUST include an inline citation at the end of the sentence using the exact tag provided in the tool output (e.g., [Page 12]). 
-2. NO HALLUCINATIONS: You may only use information explicitly stated in the retrieved text chunks. Do not synthesize outside knowledge.
-3. INSUFFICIENT EVIDENCE: If the retrieved text chunks do not contain the answer, you are forbidden from guessing. You MUST reply exactly with: "I don't have enough information in the document to answer this."
-
-If you use TavilySearch for web answers, cite the source URL clearly.
-"""
+system_prompt = load_system_prompt(PROMPT_VERSION)
 
 agent = create_agent(
     model=model,
@@ -199,4 +203,5 @@ demo = gr.Interface(
     description="Ask questions about the 'AI in Science' research paper or recent developments in AI.",
 )
 
-demo.launch()
+if __name__ == "__main__":
+    demo.launch()
