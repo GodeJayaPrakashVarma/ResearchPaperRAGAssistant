@@ -1,0 +1,443 @@
+[
+  {
+    "id": "eval_1",
+    "question": "Who authored the Science-Policy Brief for the Multistakeholder Forum on Science, Technology and Innovation for the SDGs titled 'Artificial Intelligence in Scientific Research: Lessons for SPIs'?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that the brief titled 'Artificial Intelligence in Scientific Research: Lessons for SPIs' was authored by Sarosh Nagar from Harvard University, United States of America, and cites page 1. This is directly supported by Document Chunk 1.",
+    "generated_answer": "The Science-Policy Brief for the Multistakeholder Forum on Science, Technology and Innovation for the SDGs titled 'Artificial Intelligence in Scientific Research: Lessons for SPIs' was authored by **Sarosh Nagar** from Harvard University, United States of America (p. 1)."
+  },
+  {
+    "id": "eval_2",
+    "question": "Why is public action needed to build a large-scale high-quality graph of commonsense knowledge?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the information provided in the context, noting that public action is needed because the effort required to build a commonsense knowledge graph is beyond the private sector's research horizons and firms mostly do not care about scientific knowledge. All claims are directly supported by the text.",
+    "generated_answer": "Public action is needed to build a large-scale, high-quality graph of commonsense knowledge primarily because the scale of effort required falls beyond the usual research horizons of the private sector (pp. 41, 256). Furthermore, commercial firms have little incentive to invest in this area because they mostly do not focus on scientific knowledge, even though such a resource would broadly benefit the entire AI research community and society (pp. 41, 256)."
+  },
+  {
+    "id": "eval_3",
+    "question": "Who authored the section titled 'Artificial intelligence and development projects: A case study in funding mechanisms to optimise research excellence in sub-Saharan Africa'?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that the section titled 'Artificial intelligence and development projects: A case study in funding mechanisms to optimise research excellence in sub-Saharan Africa' was authored by Davor Orli\u0107 and John Shawe-Taylor, which is directly supported by Document Chunk 1 (Table of Contents on Page 11).",
+    "generated_answer": "The section titled \"Artificial intelligence and development projects: A case study in funding mechanisms to optimise research excellence in sub-Saharan Africa\" was authored by Davor Orli\u0107 and John Shawe-Taylor (p. 11)."
+  },
+  {
+    "id": "eval_4",
+    "question": "What happens when a deep-learning robot trained to work with red, blue, and green bottles is tested on black bottles?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the context, stating that a deep-learning robot trained on red, blue, and green bottles may not generalize correctly to black bottles, which is explicitly mentioned in multiple document chunks.",
+    "generated_answer": "When a deep-learning robot trained to work with red, blue, and green bottles is tested on black bottles, it **may not generalize correctly** (p. 24, p. 111). \n\nThis occurs because data-driven AI models can malfunction in ways that differ from traditional algorithms, often picking up subtle patterns or training data specific to their original training set rather than learning abstract concepts that apply universally (p. 24, p. 111)."
+  },
+  {
+    "id": "eval_5",
+    "question": "What is one risk associated with language models in research mentioned in the text regarding publish-or-perish dynamics?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is fully supported by the provided context chunks, which discuss how language models make content generation easier while struggling with evidence and argument evaluation, potentially rewarding low-quality research under publish-or-perish dynamics and disadvantaging higher-quality research.",
+    "generated_answer": "One risk associated with language models in research regarding publish-or-perish dynamics is that language models make it much easier to generate content quickly without necessarily being good enough to evaluate arguments and evidence well (p. 36, p. 223). Consequently, the existing publish-or-perish dynamics in academia may inadvertently reward researchers who abuse these tools to produce and publish large amounts of low-quality content, while putting researchers who take the time to conduct and publish higher-quality research at a disadvantage (p. 36, p. 223)."
+  },
+  {
+    "id": "eval_6",
+    "question": "Who are the authors of the 2009 article \"The automation of science\" published in Science?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": false,
+    "judge_reasoning": "The answer provides a detailed list of authors for a 2009 article not mentioned in the context, explicitly stating that this information was drawn from a web search outside the direct text of the OECD report. Therefore, the answer contains claims and information not directly supported by the context.",
+    "generated_answer": "The authors of the 2009 article \"The automation of science\" (published in *Science*, Vol. 324, Issue 5923, pp. 85\u201389) are:\n\n1. Ross D. King\n2. Jem Rowland\n3. Stephen G. Oliver\n4. Michael Young\n5. Wayne Aubrey\n6. Emma Byrne\n7. Maria Liakata\n8. Magdalena Markham\n9. P\u0131nar Pir\n10. Larisa N. Soldatova\n11. Andrew Sparkes\n12. Kenneth E. Whelan\n13. Amanda Clare\n\n*(Note: While the OECD report mentions Ross King in the context of this work and his co-development of the robot scientist \"Adam\" [p. 25], the complete author list is drawn from the publication record via web search as it falls outside the direct text of the OECD report.)*"
+  },
+  {
+    "id": "eval_7",
+    "question": "What indicator does the essay use to measure technological progress in agriculture given that output fluctuates due to weather?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the context, specifically Document Chunk 1 and 2, which states that 'Since agricultural output fluctuates a lot due to weather, this essay uses a long -run indicator of progress \u2013 the percentage change in a measure of technological efficiency over 20 years.'",
+    "generated_answer": "To account for fluctuations in agricultural output caused by weather, the essay uses a long-run indicator of progress: **the percentage change in a measure of technological efficiency over 20 years** (p. 65)."
+  },
+  {
+    "id": "eval_8",
+    "question": "Who authored the 2007 paper titled 'Return on Capital (ROC), Return on Invested Capital (ROIC) and Return on Equity (ROE): Measurement and Implications'?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that the 2007 paper titled 'Return on Capital (ROC), Return on Invested Capital (ROIC) and Return on Equity (ROE): Measurement and Implications' was authored by A. Damodaran on page 78, which is directly supported by Document Chunk 1 and Document Chunk 2.",
+    "generated_answer": "The 2007 paper titled 'Return on Capital (ROC), Return on Invested Capital (ROIC) and Return on Equity (ROE): Measurement and Implications' was authored by A. Damodaran (p. 78)."
+  },
+  {
+    "id": "eval_9",
+    "question": "In which scientific fields is China approaching the United States and the EU-15 countries in terms of cognitive extent?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is fully supported by the provided context. It accurately reflects that China is approaching the US and EU-15 in physics and engineering, followed by computer science and medicine, and lags in psychology, agriculture, and social sciences due to potential language factors as described in the text.",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, China is approaching the United States and the EU-15 countries in terms of cognitive extent most closely in **physics and engineering**, followed by **computer science and medicine** (p. 95). \n\nConversely, the report notes that China still lags significantly in **psychology, agriculture, and social sciences**, though this may partly be due to literature in those fields being primarily published in national languages and thus excluded from the study's data source (p. 95)."
+  },
+  {
+    "id": "eval_10",
+    "question": "What kind of software automatically performs differential calculus and reduces the burden on scientists to maintain their own software?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the information provided in the context chunks regarding automatic differentiation (AD) software, differentiable programming, GPUs, and reducing the burden on scientists, with correct citations.",
+    "generated_answer": "The software that automatically performs differential calculus and reduces the burden on scientists to maintain their own software is known as **automatic differentiation (AD) software** (or software used in **differentiable programming**) (p. 110, 113). \n\nRelying on open-source AD software helps alleviate the burden on scientists to maintain or upgrade their own software to run on modern hardware, such as GPUs (p. 110)."
+  },
+  {
+    "id": "eval_11",
+    "question": "Why are automated ML-based methods for claim verification desirable and valuable?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is entirely faithful to the provided context. Every point made\u2014the value of ML-based methods for assisting human fact-checkers, improving coverage, and dealing with the rapid growth of scientific output in areas like COVID-19 and climate change\u2014is directly supported by the text in the document chunks.",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, automated machine learning (ML)-based methods for claim verification are desirable and valuable for several key reasons:\n\n* **Assisting and reducing effort for human fact-checkers:** They help alleviate the laborious and resource-intensive nature of manual fact-checking (p. 123).\n* **Improving system coverage:** They expand the reach and scalability of fact-checking systems to keep pace with the massive, rapid growth of scientific output\u2014where millions of papers are written annually and hundreds are published daily (p. 123). \n* **Tackling scale challenges:** Much like social media content, scientific literature is growing too rapidly for manual verification alone, particularly in contentious or fast-moving areas such as COVID-19 and climate change (p. 123)."
+  },
+  {
+    "id": "eval_12",
+    "question": "Which country is home to the catalysis automated discovery initiative known as Realcat?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The context explicitly states that catalysis initiatives include Realcat in France, which directly supports the answer.",
+    "generated_answer": "The catalysis automated discovery initiative known as Realcat is located in **France** (p. 138)."
+  },
+  {
+    "id": "eval_13",
+    "question": "What is the purpose of citizen science projects like iNaturalist, Pl@ntNet, and BirdNet adopting a human-in-the-loop approach?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is fully faithful to the provided context. All claims regarding human-in-the-loop processes, training AI algorithms to recognize species accurately, creating/labeling datasets, overseeing and fine-tuning models, and improving efficiency and data quality are directly supported by the text in the context chunks.",
+    "generated_answer": "According to the OECD report, citizen science projects like iNaturalist, Pl@ntNet, and BirdNet adopt a human-in-the-loop approach to support learning between humans and machines, which helps enhance the systems in the following ways:\n\n* **Training AI Algorithms:** Humans create and label datasets, oversee and fine-tune models, and test and validate them (p. 152). Through these human-in-the-loop systems, AI algorithms can be trained to recognize species with an accuracy that approaches that of human species experts (p. 152).\n* **Improving Efficiency and Data Quality:** Human supervision and AI integration at different stages of the project cycle result in high-quality AI systems and make the projects more efficient (p. 152)."
+  },
+  {
+    "id": "eval_14",
+    "question": "What puts a large financial burden on smaller academic groups regarding modern AI systems?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the details provided in the context, including the costs of training runs, the requirement for continuous improvement, and the infrastructure/engineering challenges faced by smaller academic groups, with appropriate page citations.",
+    "generated_answer": "According to the OECD report, the large financial burden on smaller academic groups stems from the infrastructure and resource requirements of modern AI systems, specifically:\n\n* **High costs per training run:** Breakthrough models contain billions of parameters and are trained for weeks on hundreds of specialized processors. Each training run costs tens of thousands of US dollars, and continuous training sessions are required to keep improving the models (p. 165). \n* **The need for continuous training and early discovery:** Achieving early discovery requires large AI systems and many training runs, with costs that can range from hundreds of thousands to millions of US dollars (p. 30).\n* **Infrastructure and engineering overhead:** Large modern AI setups require moving data and code together at massive scales, necessitating dedicated engineering teams to build complex scaffolding (such as data processing pipelines, compute resource orchestration, and database partitioning). This level of expertise and human resource investment is difficult for smaller academic groups to sustain unless AI is the primary focus of their operations (pp. 30, 165)."
+  },
+  {
+    "id": "eval_15",
+    "question": "Who authored the 2021 article analysing China's PIPL and comparing it to the EU's GDPR?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that the 2021 article titled 'Analysing China's PIPL and how it compares to the EU's GDPR' was authored by Xu, K. et al., which is directly supported by Document Chunk 1, 2, and 3 on page 179.",
+    "generated_answer": "According to the report, the 2021 article titled \u201cAnalysing China\u2019s PIPL and how it compares to the EU\u2019s GDPR\u201d was authored by **Xu, K. et al.** (p. 179)."
+  },
+  {
+    "id": "eval_16",
+    "question": "What is identified as the fundamental problem preventing current NLP techniques from achieving higher levels of comprehension and reasoning?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the information provided in the context, specifically citing that current NLP techniques lack rich models of the world to ground language and have no exposure to entities, relationships, events, and experiences. The citation of pages 32 and 195 aligns with the provided document chunks.",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, the fundamental problem preventing current natural language processing (NLP) techniques from achieving higher levels of comprehension and reasoning is that **they lack rich models of the world to which they can ground language** (p. 32, p. 195). \n\nSpecifically, current techniques have no direct exposure to the entities, relationships, events, and real-world experiences that texts describe (p. 195)."
+  },
+  {
+    "id": "eval_17",
+    "question": "What is the result of the fragmentation of growing fields into subspecialties with their own literature?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the contents of the context regarding the consequences of fragmentation in growing fields (combinatorial explosion of undiscovered public knowledge, undiscovered correlations, undrawn conclusions, and failure to capitalize on insights from analogous problems). All claims are directly supported by the text.",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, the fragmentation of growing fields into subspecialties clustering in discrete areas of knowledge leads to several consequences:\n\n* A combinatorial explosion of \"undiscovered public knowledge,\" which refers to knowledge that exists in the unrevealed connections between different bodies of publicly available knowledge (p. 208).\n* Undiscovered correlations, undrawn conclusions, and a failure to capitalize on insights from analogous problems, because the means are unavailable to systematically resurrect older or neglected findings and hypotheses from distant disciplines (p. 208)."
+  },
+  {
+    "id": "eval_18",
+    "question": "What initiatives are suggested to broaden the range of perspectives and preferences in the design and evaluation of AI technologies?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the context, specifically citing that increasing the sociodemographic diversity and inclusiveness of the AI research talent pool broadens perspectives and preferences in AI design and evaluation, and makes them more thematically diverse, which is directly supported by Document Chunks 1 and 2.",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, the initiative suggested to broaden the range of perspectives and preferences brought into the design and evaluation of AI technologies is:\n\n* **Increasing the sociodemographic diversity and inclusiveness of the AI research talent pool** (p. 236). \n\nThe report notes that doing so could also make AI technologies more thematically diverse (p. 236)."
+  },
+  {
+    "id": "eval_19",
+    "question": "What do artificial intelligence systems need to increase the productivity of science, according to the text?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the information provided in Document Chunk 1 and Document Chunk 2, specifically regarding what AI systems need to increase the productivity of science (understanding domains and the world, and using explicit/verifiable knowledge bases for reasoning and transparent explanations). All claims are directly supported.",
+    "generated_answer": "According to the text, for artificial intelligence (AI) systems to increase the productivity of science, they need to:\n\n* **Understand the scientific domains** they operate in as well as the **world** in which those domains are embedded (p. 253).\n* **Access knowledge bases** that provide this information in explicit and verifiable forms to support reasoning, which includes providing transparent explanations for their conclusions (p. 253)."
+  },
+  {
+    "id": "eval_20",
+    "question": "When is an experiment considered to be inferentially reproducible?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the definitions and examples provided in the context regarding inferential reproducibility, directly citing the text without introducing any outside or unsupported claims.",
+    "generated_answer": "According to the OECD *Artificial Intelligence in Science* report, an experiment is considered to be inferentially reproducible **if a different analysis of the same or different outcome leads to the same conclusion in both the original and reproducibility studies** (p. 267). \n\nFor example, in an image classification experiment, the study is inferentially reproducible if one statistical test is swapped for a different one when analyzing the classes produced by the machine-learning algorithms on the test set; even though the analysis is different, the result is considered reproducible because the same overall conclusion is reached (p. 267)."
+  },
+  {
+    "id": "eval_21",
+    "question": "Who authored the 1996 article titled 'Equipping researchers for the future' published in Nature?",
+    "retrieval_hit": false,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states details about the 1996 article 'Equipping researchers for the future', including authors L. Georghiou and P. Halfpenny, journal name Nature, volume, pages, and page citation. All of these details are directly supported by Document Chunk 1 and Document Chunk 2.",
+    "generated_answer": "The 1996 article titled 'Equipping researchers for the future', published in *Nature* (Vol. 383, pp. 663\u2013664), was authored by L. Georghiou and P. Halfpenny (p. 279)."
+  },
+  {
+    "id": "eval_22",
+    "question": "Who authored the 2019 article titled 'Hebert named dean of Carnegie Mellon's top-ranked School of Computer Science'?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that the 2019 article 'Hebert named dean of Carnegie Mellon's top-ranked School of Computer Science' was authored by B. Spice (p. 294), which is directly supported by Document Chunk 1 and 3.",
+    "generated_answer": "The 2019 article titled 'Hebert named dean of Carnegie Mellon's top-ranked School of Computer Science' was authored by B. Spice (p. 294)."
+  },
+  {
+    "id": "eval_23",
+    "question": "What should policy bodies systematically evaluate regarding the impacts of AI on everyday scientific practice?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is entirely faithful to the provided context. Every claim made in the answer, including the specific points on human-AI teaming, work, career trajectories, training, funding call requirements, response mechanisms, and independent fora, is directly supported by the text in Document Chunks 1 and 2.",
+    "generated_answer": "According to the OECD *Artificial Intelligence in Science* report, policy bodies should systematically evaluate the impacts of AI on everyday scientific practice, specifically including:\n\n* **Human-AI teaming** (p. 14)\n* **Work** (p. 14)\n* **Career trajectories** (p. 14)\n* **Training** (p. 14)\n\nTo support this, funding calls could require these assessments, and funders and policymakers should establish response mechanisms to act on the insights gathered, as well as independent fora for ongoing dialogue regarding the changing nature of scientific work, productivity, and culture (p. 14)."
+  },
+  {
+    "id": "eval_24",
+    "question": "According to Aishik Ghosh, in which domains and stages of science is AI being taken up?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the statements made by Aishik Ghosh in the context regarding the domains and stages of science where AI is being taken up, and every claim is directly supported by Document Chunk 1 and Document Chunk 2.",
+    "generated_answer": "According to Aishik Ghosh, AI is being taken up in **every domain** of science (p. 23). \n\nRegarding the **stages of science**, AI is being adopted across all stages, spanning from:\n* Hypothesis generation (p. 23)\n* Experiment design, monitoring, and simulation (p. 23)\n* Scientific publication and communication (p. 23)"
+  },
+  {
+    "id": "eval_25",
+    "question": "How can governments assist in expanding the use of federated learning across research centres?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the content provided in the context regarding how governments can assist in expanding the use of federated learning through public financing and conditionality of funding, all supported by the text on page 31.",
+    "generated_answer": "According to the OECD report, governments can assist in expanding the use of federated learning across research centres through the following measures (p. 31):\n\n* **Public Financing:** Governments can provide financial support to help research centres adopt a decentralised approach and build shared infrastructure, as the necessary level of co-operation would otherwise emerge only very slowly.\n* **Conditionality of Funding:** Public funding should be made conditional on recipient infrastructures being governed by a shared set of rules and protocols covering aspects such as interoperability, data portability, and security."
+  },
+  {
+    "id": "eval_26",
+    "question": "What type of programmes are suggested to enable scientists, engineers, and industry to collaborate with computer scientists, applied mathematicians, and statisticians to solve challenges using AI technologies?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is entirely faithful to the provided context, accurately reflecting the policy suggestions regarding multidisciplinary programmes, government funding, and shared infrastructure with correct citations.",
+    "generated_answer": "To enable scientists, engineers, and industry to collaborate with computer scientists, applied mathematicians, and statisticians to solve challenges using AI and machine learning technologies, **broad multidisciplinary programmes** are suggested (p. 40, p. 250). \n\nAccording to the report, these programmes require:\n* **Dedicated and coherent government funding** with processes that actively encourage cross-disciplinary collaboration, moving away from \"stove-piped\" funding allocated strictly to individual disciplines (p. 40, p. 250).\n* **Shared infrastructure** (such as shared cloud infrastructure or initiatives like a National AI Research Resource) to provide researchers with access to competitive computing resources, high-quality data, and tools that fuel AI R&D (p. 250)."
+  },
+  {
+    "id": "eval_27",
+    "question": "Who authored the 2013 article titled \"Australia\u2019s grant system wastes time\" published in Nature?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that the 2013 article 'Australia's grant system wastes time' published in Nature was authored by D.L. Herbert, A.G. Barnett, and N. Graves (p. 48). This information is explicitly supported by Document Chunk 1 and Document Chunk 4, which list the reference for Herbert, D.L, A.G. Barnett and N. Graves (2013), 'Australia\u2019s grant system wastes time', Nature, Vol. 495, pp. 314.",
+    "generated_answer": "The 2013 article titled \"Australia\u2019s grant system wastes time\", published in *Nature*, was authored by D.L. Herbert, A.G. Barnett, and N. Graves (p. 48)."
+  },
+  {
+    "id": "eval_28",
+    "question": "What factors are impacting transistor scaling and risking improvements in electronic systems driven solely by shrinking transistors?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is fully supported by the provided text chunks. Every point mentioned\u2014regarding gate width, transistor performance, photolithography challenges, switching properties deteriorating at near-atomic dimensions, and rising unit production costs\u2014is directly sourced from Page 61 of the context.",
+    "generated_answer": "According to the OECD report, physical limits related to **gate width, transistor performance, and photolithography** are impacting transistor scaling and putting improvements driven solely by shrinking transistors at risk (p. 61). \n\nSpecifically, the key factors include:\n\n* **Deterioration of Switching Properties at Near-Atomic Dimensions:** Gates control the flow of current in a circuit. As active gate widths shrink and approach near-atomic dimensions, maintaining transistor performance becomes a challenge, and the switching properties of conventional transistor structures deteriorate (p. 61).\n* **Photolithography and Patterning Challenges:** Creating extremely small films of materials on silicon using photolithography becomes increasingly difficult (p. 61). Patterning at such tiny scales requires special ultraviolet laser light sources, multiple exposures, and extraordinary control of equipment (p. 61).\n* **Rising Unit Production Costs:** Due to the severe complexity and equipment precision required for advanced patterning, unit production costs for transistors start to rise rather than decline as they historically did under Moore's Law, making the smallest-feature chips economically justifiable only for high-value applications (p. 61)."
+  },
+  {
+    "id": "eval_29",
+    "question": "Who authored the 2017 book titled 'The Rise and Fall of American Growth'?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The context mentions the book 'The Rise and Fall of American Growth' authored by R. Gordon on both page 59 and page 71, and page 59 provides the full title including 'The U.S. Standard of Living since the Civil War'. The answer correctly identifies the author and citations based on the provided text.",
+    "generated_answer": "The 2017 book *The Rise and Fall of American Growth* was authored by Robert J. Gordon (cited as R. Gordon) (p. 59, 71)."
+  },
+  {
+    "id": "eval_30",
+    "question": "What happens to the financial performance of R&D-intensive sectors if adjustments for R&D capitalisation are not made when comparing ROE?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that without adjustments for R&D capitalisation, the financial performance of R&D-intensive sectors is overstated. This claim is directly supported by Document Chunk 1 and 2, which state: 'Without the adjustment, one overstates the financial performance of R&D-intensive sectors.'",
+    "generated_answer": "If adjustments for R&D capitalisation are not made when comparing Return on Equity (ROE) across sectors, the financial performance of R&D-intensive sectors (such as the drug and biotechnology industries) is **overstated** (p. 80)."
+  },
+  {
+    "id": "eval_31",
+    "question": "How might cognitive extent be most easily envisioned as a measure?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer directly quotes and paraphrases information from Document Chunk 1 on Page 92 of the context, stating that cognitive extent can be envisioned as a measure of the intellectual territory covered by science or its different subunits.",
+    "generated_answer": "Cognitive extent might be easiest to envision as a measure, at any given point in time, of the **intellectual territory covered by science or its different subunits** (such as broad research areas, specialisations, journals, or countries) (p. 92)."
+  },
+  {
+    "id": "eval_32",
+    "question": "At which stages of the scientific process has AI already left a mark?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is fully faithful to the provided context. Every claim made in the answer, including the stages of the scientific process and the specific applications like finding insights from old literature and writing clearer papers, is directly supported by the text in Document Chunk 1 and Document Chunk 2.",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, AI has already left a mark on **every stage of the scientific process** (p. 105). Specifically, these stages include:\n\n* **Hypothesis generation** (p. 105)\n* **Mathematical proof building** (p. 105)\n* **Experiment design and monitoring** (p. 105)\n* **Data collection** (p. 105)\n* **Simulation and rapid inference** (p. 105)\n\nAdditionally, the report notes that AI contributes to ancillary and subsequent activities such as finding new scientific insights from old scientific literature, writing clearer scientific papers, and assisting with research on AI itself (p. 105)."
+  },
+  {
+    "id": "eval_33",
+    "question": "What might cause an AI system controlling scientific machinery to behave erratically?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that an AI system controlling scientific machinery might behave erratically when encountering an untrained situation, which is directly supported by Document Chunk 1 and Chunk 2 ('These could occur, for example, if an AI system that controls scientific machinery were to behave erratically when it encounters a situation it has never experienced in training').",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, an AI system controlling scientific machinery might behave erratically when it encounters a situation that it has never experienced during its training (p. 113)."
+  },
+  {
+    "id": "eval_34",
+    "question": "What is another term for the verification of scientific claims mentioned in the text?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The context explicitly states in Document Chunk 1 (Page 123) that \"The verification of scientific claims \u2013 also known as scientific fact -checking \u2013 is an important application area...\", making the answer faithful to the context.",
+    "generated_answer": "Another term for the verification of scientific claims mentioned in the text is **scientific fact-checking** (p. 123)."
+  },
+  {
+    "id": "eval_35",
+    "question": "What are some of the drawbacks of Eve's library-screening mode mentioned in the text?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the drawbacks of Eve's library-screening mode as stated in the provided context, noting that it is slow, wastes resources by testing every compound, and is unintelligent.",
+    "generated_answer": "Based on the OECD report, the drawbacks of Eve's library-screening mode (which operates via standard brute-force mass screening) include:\n\n* **It is slow** (p. 133).\n* **It wastes resources** because every single compound in the library is tested (p. 133).\n* **It is unintelligent**, as it makes no use of what is learned during the screening process (p. 133)."
+  },
+  {
+    "id": "eval_36",
+    "question": "What emerging applications will give rise to new capabilities in data collection and automatic detection?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the contents of the provided document chunks, listing emerging applications and citing the correct pages without introducing any unsupported claims.",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, the emerging applications that will give rise to new capabilities in data collection and automatic detection\u2014particularly in the context of citizen science and AI integration\u2014include:\n\n* **Autonomous systems of all types**, such as drones and self-driving/autonomous vehicles (p. 29, p. 153).\n* **Robotic and remote sensing instrumentation** integrated with artificial intelligence (p. 29, p. 153).\n* **Improvements in mobile applications and hardware** (p. 153).\n* **Communication technologies**, such as wireless broadband networks and cloud computing (p. 153).\n* **More accessible ways for non-experts to use AI techniques** (p. 29)."
+  },
+  {
+    "id": "eval_37",
+    "question": "What diverse types of data do AI companies use to create their own drug target pipelines?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer lists sources used by AI companies for drug target discovery platforms (cell microscopy, electronic medical records, genetic databases, and scientific literature), all of which are directly supported by the text in Document Chunk 1 and Document Chunk 2 with correct page citations.",
+    "generated_answer": "According to the OECD report, AI companies developing their own drug target discovery platforms use diverse data gleaned from sources including:\n\n* **Cell microscopy** (p. 163)\n* **Electronic medical records** (p. 163)\n* **Genetic databases** (p. 163)\n* **Scientific literature** (p. 163)"
+  },
+  {
+    "id": "eval_38",
+    "question": "Who authored the section 'Tackling Data Privacy, Security and Policy Challenges with Federated Learning' in the OECD 2023 report?",
+    "retrieval_hit": false,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer correctly identifies the authors of the section based on the provided text (Document Chunk 4, page 9 and Document Chunk 1, page 171). All claims are directly supported by the context.",
+    "generated_answer": "The section \"Tackling Data Privacy, Security and Policy Challenges with Federated Learning\" (appearing as part of \"Applying AI to real-world health-care settings and the life sciences\") in the OECD 2023 report was authored by **Mathieu Galtier** (Owkin, France) and **Darius Meadon** (Owkin, United Kingdom) (p. 9, p. 171)."
+  },
+  {
+    "id": "eval_39",
+    "question": "Why do most neural network approaches have a black-box character?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the content provided in the context chunks regarding why neural networks have a black-box character, including data correlations not relating to real-world states, parameters not corresponding to independent variables, and a lack of insight into how they accomplish tasks, all supported by the text.",
+    "generated_answer": "According to the OECD report *Artificial Intelligence in Science*, most neural network approaches have a black-box character for the following reasons:\n\n* **Lack of relationship to real-world states:** Their inner workings consist of a mass of data correlations that show no evident relationship to abstract or physical states of a dynamic system in the real world (such as a weather pattern) (p. 185).\n* **Parameters do not correspond to independent variables:** The internal parameters of a neural network model do not directly correspond to any independent variables of the phenomenon they are intended to model (such as the specific features used to describe a cat) (p. 185).\n* **Opacity of reasoning:** While they successfully accomplish tasks, they provide little to no insight or explanation of *how* they do so (p. 185)."
+  },
+  {
+    "id": "eval_40",
+    "question": "What are multi-hop QA questions designed to rely on?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer states that multi-hop QA questions are designed to rely on information from multiple pieces of text, which theoretically requires a higher level of comprehension and reasoning. This is directly supported by Document Chunk 1 and Chunk 2.",
+    "generated_answer": "Multi-hop question answering (QA) questions are designed to rely on information from **multiple pieces of text**, which theoretically requires a higher level of comprehension and reasoning (p. 194)."
+  },
+  {
+    "id": "eval_41",
+    "question": "What lies at the heart of an AI instead of rules, according to the text?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the content in Document Chunk 1 and 2, specifically stating that at the heart of an AI lie tens or hundreds of thousands of numbers (whose interpretation is difficult even for programmers) rather than rules, and that these numbers encode knowledge accumulated during training. All claims are directly supported by the context.",
+    "generated_answer": "According to the OECD report on *Artificial Intelligence in Science*, at the heart of an AI lie tens or hundreds of thousands of numbers\u2014whose interpretation is difficult even for programmers\u2014rather than rules (p. 204). These numbers encode the knowledge that the AI accumulates during training (p. 204)."
+  },
+  {
+    "id": "eval_42",
+    "question": "What platforms are mentioned as examples for sharing research outputs such as papers and datasets?",
+    "retrieval_hit": false,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the platforms, sources, and details provided across the various document chunks, and every claim is directly supported by the context without introducing outside information.",
+    "generated_answer": "According to the OECD *Artificial Intelligence in Science* report, several platforms are mentioned for sharing research outputs such as papers and datasets:\n\n* **For datasets and other research outputs (figures, images, videos):** \n  * **Figshare** (p. 28, p. 147)\n  * **Zenodo** (p. 28, p. 147, p. 212)\n  * **Dryad** (p. 147)\n* **For research papers and preprints:** \n  * **arXiv** (p. 212)\n* **Other mentioned platforms supporting research output sharing and community connection:**\n  * Cloud-based bibliography management solutions such as **Mendeley** and **Zotero** (p. 28, p. 147)\n  * Academic social networking sites such as **ResearchGate** and **Academia.edu** (p. 28, p. 147)"
+  },
+  {
+    "id": "eval_43",
+    "question": "In what year was J.C.R. Licklider's essay \"Man-computer symbiosis\" published?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The context mentions Licklider's essay 'Man-computer symbiosis' (1960) on pages 224 and 225, making the answer completely faithful to the context.",
+    "generated_answer": "J.C.R. Licklider's essay \"Man-computer symbiosis\" was published in **1960** (p. 224, 225)."
+  },
+  {
+    "id": "eval_44",
+    "question": "According to Beckert (2010), why do industries undergo homogenisation?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the information provided in Document Chunk 1 and Chunk 2, specifically citing Beckert (2010) regarding the homogenisation of industries to facilitate flows of knowledge and talent, along with the correct page number.",
+    "generated_answer": "According to Beckert (2010), industries undergo homogenisation as organizations become more similar to each other in order to facilitate the flows of knowledge and talent (p. 234)."
+  },
+  {
+    "id": "eval_45",
+    "question": "What two sources are mentioned as generating the rapid growth of scientific data that epitomises Jim Gray's 'Fourth Paradigm' of data-intensive science?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately identifies the two sources of scientific data generation mentioned in Document Chunk 1 (scientific experiments at large national and international facilities, and model simulations on supercomputers) that epitomise Jim Gray's Fourth Paradigm, with direct support from the provided context.",
+    "generated_answer": "The two sources mentioned as generating the rapid growth of scientific data that epitomises Jim Gray's \"Fourth Paradigm\" of data-intensive science are:\n\n1. **Scientific experiments** at large national and international facilities (p. 247).\n2. **Model simulations** on supercomputers (p. 247)."
+  },
+  {
+    "id": "eval_46",
+    "question": "What kind of teams might collaborate on knowledge graphs for fields that include both professional knowledge and relevant information according to the text?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer directly reflects the information provided in Document Chunk 1 and Document Chunk 2, which state that teams of AI scientists and scientists from other domains might collaborate on knowledge graphs for fields that include both professional knowledge and relevant information, and cites page 256.",
+    "generated_answer": "According to the OECD *Artificial Intelligence in Science* report, teams consisting of **AI scientists and scientists from other domains** might collaborate on knowledge graphs for fields that include both professional knowledge and relevant information (p. 256)."
+  },
+  {
+    "id": "eval_47",
+    "question": "In a reproducibility experiment where independent researchers write all their own code, collect new data, and execute the experiment on a different computer, what is expected regarding the outcome compared to the original experiment?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the statements in the context regarding reproducibility experiments that rely on written documentation, where independent researchers write their own code, collect new data, and execute on a different computer. It correctly notes that the outcomes are not expected to be identical, but if results are the same, the experiment is more generalizable and hypotheses can be trusted more deeply.",
+    "generated_answer": "In a reproducibility experiment where independent researchers rely only on written documentation, write all of their own code, collect new data, and execute the experiment on a different computer, the outcome of the re-implemented experiment **should not be expected to be identical** to that of the original experiment (p. 267). \n\nHowever, if the results *are* the same under these conditions, the reproducibility experiment is considered much more generalizable, and the underlying hypotheses can be trusted more deeply (p. 267)."
+  },
+  {
+    "id": "eval_48",
+    "question": "What paradox does the adoption of new automated tools present for scientists?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer is fully faithful to the provided context. Every claim made in the answer\u2014including the paradox of new tools leaving scientists less equipped to critique them, the 'black-boxing' of techniques, the parallel to aviation/pilots, the reproducibility crisis from statistical software, and the digitalisation paradox regarding scientific labor\u2014is directly supported by the text chunks provided.",
+    "generated_answer": "According to the OECD report, the adoption of new automated tools and algorithms in science presents a paradox because it can ultimately leave scientists *less* well-equipped to understand and critique their application (p. 276). \n\nSpecifically:\n* As critical techniques and processes become \"black-boxed\" behind automated systems and algorithms, future generations of scientists may be able to accomplish tasks yet become unable to perform experiments without automated support or fully understand algorithmically produced outcomes (p. 276). \n* Skills and tacit knowledge relating to key procedures risk being lost, mirroring concerns in aviation where pilots lose manual flying skills (p. 276). \n* This mirrors how the earlier \"black-boxing\" of statistical analysis in software packages contributed to the misapplication of statistical tests and played a role in the research reproducibility crisis (p. 276).\n\nAdditionally, the report notes a related \"digitalisation paradox\" concerning scientific labour: while robotics and advanced analytics are intended to simplify work by automating repetitive tasks (such as pipetting), they actually increase the overall complexity of scientific work by introducing a demand for new routine tasks, protocols, methodologies, and translational labor across interdisciplinary collaborations (p. 275)."
+  },
+  {
+    "id": "eval_49",
+    "question": "What funding structure did PASCAL2 use while maintaining a coordinated research and collaborative focus?",
+    "retrieval_hit": true,
+    "called_pdf_tool": true,
+    "faithfulness_passed": true,
+    "judge_reasoning": "The answer accurately reflects the details provided in the context regarding PASCAL2's bottom-up and small-scale agile funding structure focused on pattern analysis and machine learning, and every claim is directly supported by the text.",
+    "generated_answer": "PASCAL2 used a **bottom-up and small-scale agile funding structure** (utilizing a micro-project model with minimal bureaucratic overhead), which was built around a coordinated research and collaborative theme focused on **pattern analysis and machine learning** (p. 46, p. 287)."
+  }
+]
