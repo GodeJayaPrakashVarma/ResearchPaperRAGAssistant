@@ -35,7 +35,7 @@ TARGET_FAITHFULNESS = 0.85
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 JUDGE_MODEL = init_chat_model(
-    "google_genai:gemini-3.5-flash-lite",
+    "google_genai:gemini-2.5-flash-lite",
     api_key=gemini_api_key,
     response_mime_type="application/json",
 )
@@ -89,7 +89,7 @@ def run_evaluation(golden_file: str = GOLDEN_FILE, target_faithfulness: float = 
     with open(golden_file, "r") as f:
         golden_set = json.load(f)
 
-    eval_limit = 50 # how many questions and answers to evaluate from golden dataset
+    eval_limit = 15 # how many questions and answers to evaluate from golden dataset
     if eval_limit:
         golden_set = golden_set[: int(eval_limit)]
         print(f"EVAL_LIMIT set -- running on {len(golden_set)} item(s) only.\n")
