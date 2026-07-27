@@ -1,0 +1,39 @@
+name: RAG Evaluation Suite
+
+# Runs evaluate.py against the committed, manually-verified golden_dataset.json.
+# Deliberately does NOT call generate_golden_dataset.py here -- regenerating the
+# golden set inside CI would mean "ground truth" changes on every run, which
+# defeats the point of a regression gate. Generate + verify it locally, commit it,
+# and only evaluate.py runs here.
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  evaluate-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run RAG Faithfulness & Retrieval Eval
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: |
+          python evaluate.py
