@@ -57,7 +57,7 @@ PROMPT_VERSION = "v1.2"
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 model = init_chat_model(
-    "google_genai:gemini-3.5-flash-lite",
+    "google_genai:gemini-2.5-flash-lite",
     api_key=gemini_api_key,
 )
 
