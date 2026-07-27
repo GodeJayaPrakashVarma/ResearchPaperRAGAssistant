@@ -19,9 +19,9 @@ returning control to the caller.
 
 import os
 import hashlib
-
 import yaml
 from dotenv import load_dotenv
+from langsmith import traceable
 from langchain_core.documents import Document
 from langchain_core.messages import ToolMessage
 from langchain_community.document_loaders import PyPDFLoader
@@ -38,6 +38,7 @@ from langchain.agents import create_agent
 from langchain_tavily import TavilySearch
 import gradio as gr
 
+# Loads LANGCHAIN_TRACING_V2, LANGCHAIN_API_KEY, etc. from your .env file
 load_dotenv()
 
 PDF_PATH = os.getenv("PDF_PATH", "AIinScience.pdf")
@@ -57,7 +58,7 @@ PROMPT_VERSION = "v1.2"
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 model = init_chat_model(
-    "google_genai:gemini-2.5-flash-lite",
+    "google_genai:gemini-3.5-flash-lite",
     api_key=gemini_api_key,
 )
 
@@ -201,6 +202,7 @@ agent = create_agent(
 )
 
 
+@traceable(run_type="chain", name="Main Agent Invocation")
 def _invoke_agent(query: str):
     """Single place that actually calls the agent -- ask() and ask_with_sources()
     both build on this so evaluation never invokes the agent twice per question
