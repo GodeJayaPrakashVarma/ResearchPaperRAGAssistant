@@ -5,20 +5,21 @@ Ask questions about the OECD "Artificial Intelligence in Science" (2023) report,
 with a live web-search fallback for anything the report doesn't cover.
 
 Retrieval pipeline: BM25 + vector search fused via Reciprocal Rank Fusion
-(EnsembleRetriever), then narrowed by a cross-encoder re-ranker
-(ContextualCompressionRetriever) down to the final top-k passed to the LLM.
+(EnsembleRetriever), then narrowed by a plain cross-encoder re-ranking function
+(retrieve_and_rerank) down to the final top-k passed to the LLM.
 
 IMPORTANT: this module is imported directly by generate_golden_dataset.py and
 evaluate.py (they need build_vector_store / _load_indexed_documents / chunk_id /
-final_retriever / ask). Everything above the `if __name__ == "__main__":` guard
-runs on import -- that's intentional. The Gradio UI itself must stay inside that
-guard: if demo.launch() ran at import time, importing this module from an eval
-script (or from CI) would block forever on a live Gradio server instead of
-returning control to the caller.
+retrieve_and_rerank / ask_with_sources). Everything above the
+`if __name__ == "__main__":` guard runs on import -- that's intentional. The Gradio
+UI itself must stay inside that guard: if demo.launch() ran at import time,
+importing this module from an eval script (or from CI) would block forever on a
+live Gradio server instead of returning control to the caller.
 """
 
 import os
 import hashlib
+
 import yaml
 from dotenv import load_dotenv
 from langsmith import traceable
@@ -30,16 +31,17 @@ from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
-from langchain_classic.retrievers import EnsembleRetriever, ContextualCompressionRetriever
-from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
+from langchain_classic.retrievers import EnsembleRetriever
 from langchain.chat_models import init_chat_model
 from langchain.tools import tool
 from langchain.agents import create_agent
 from langchain_tavily import TavilySearch
 import gradio as gr
 
-# Loads LANGCHAIN_TRACING_V2, LANGCHAIN_API_KEY, etc. from your .env file
+# Loads GEMINI_API_KEY, TAVILY_API_KEY, and LangSmith's own tracing vars
+# (LANGSMITH_TRACING, LANGSMITH_API_KEY, LANGSMITH_PROJECT) from your .env file.
 load_dotenv()
+
 
 PDF_PATH = os.getenv("PDF_PATH", "AIinScience.pdf")
 CHROMA_DIR = os.getenv("CHROMA_DIR", "./chroma_langchain_db")
@@ -48,7 +50,11 @@ COLLECTION_NAME = "example_collection"
 CHUNK_SIZE_TOKENS = 650
 CHUNK_OVERLAP_TOKENS = 100
 
-CANDIDATE_K = 20 # how many chunks bm25 and vector search each return before fusion
+# Candidates EACH retriever (BM25, vector) contributes before fusion. Wider than a
+# vector-only setup needs, because the cross-encoder re-ranker below does the real
+# precision work -- this trades some per-query latency (40 candidates scored by the
+# cross-encoder) for better final precision.
+CANDIDATE_K = 20
 FINAL_K = 4  # how many re-ranked results actually get passed to the LLM
 
 # Bump this and add a new entry in prompts.yaml to change the active prompt without
@@ -56,11 +62,7 @@ FINAL_K = 4  # how many re-ranked results actually get passed to the LLM
 PROMPT_VERSION = "v1.2"
 
 gemini_api_key = os.getenv("GEMINI_API_KEY")
-
-model = init_chat_model(
-    "google_genai:gemini-3.5-flash-lite",
-    api_key=gemini_api_key,
-)
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
 
 def chunk_id(doc) -> str:
@@ -127,33 +129,43 @@ def build_hybrid_retriever(store: Chroma) -> EnsembleRetriever:
     )
 
 
-def build_reranking_retriever(hybrid: EnsembleRetriever, final_k: int) -> ContextualCompressionRetriever:
-    """Wrap the hybrid retriever with a cross-encoder re-ranker: takes the wide fused
-    candidate set and scores each one directly against the query, keeping only the
-    top final_k most relevant."""
-    cross_encoder_model = HuggingFaceCrossEncoder(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2")
-    reranker = CrossEncoderReranker(model=cross_encoder_model, top_n=final_k)
-    return ContextualCompressionRetriever(base_compressor=reranker, base_retriever=hybrid)
+cross_encoder_model = HuggingFaceCrossEncoder(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2")
+
+
+def rerank_documents(query: str, documents: list[Document], top_n: int) -> list[Document]:
+    """Score each candidate directly against the query with the cross-encoder, write
+    the score into metadata (so it's visible in traces), and keep the top_n most
+    relevant. Plain function instead of a compressor subclass -- same result,
+    nothing to subclass or explain beyond 'score everything, sort, keep the best'."""
+    scores = cross_encoder_model.score([(query, doc.page_content) for doc in documents])
+    for doc, score in zip(documents, scores):
+        doc.metadata["rerank_score"] = float(score)
+    ranked = sorted(zip(documents, scores), key=lambda pair: pair[1], reverse=True)
+    return [doc for doc, _ in ranked[:top_n]]
+
+
+def retrieve_and_rerank(query: str) -> list[Document]:
+    """Full retrieval pipeline: hybrid (BM25 + vector, fused via RRF) candidates,
+    narrowed down by the cross-encoder re-ranker."""
+    candidates = hybrid_retriever.invoke(query)
+    return rerank_documents(query, candidates, FINAL_K)
 
 
 vector_store = build_vector_store()
 hybrid_retriever = build_hybrid_retriever(vector_store)
-final_retriever = build_reranking_retriever(hybrid_retriever, FINAL_K)
 
 
 @tool
 def retrieve_from_pdf(query: str) -> str:
     """Retrieve information from the OECD 'Artificial Intelligence in Science' report."""
     try:
-        retrieved_docs = final_retriever.invoke(query)
+        relevant_docs = retrieve_and_rerank(query)
     except Exception as e:
         return (
             f"[RETRIEVAL ERROR] The PDF search failed: {e}. "
             f"Do not answer from report content — tell the user retrieval failed "
             f"and, if relevant, offer to try a web search instead."
         )
-
-    relevant_docs = retrieved_docs[:FINAL_K]
 
     if not relevant_docs:
         return (
@@ -192,6 +204,8 @@ def load_system_prompt(version: str, file_path: str = "prompts.yaml") -> str:
     except KeyError as e:
         raise ValueError(f"Prompt version '{version}' not found in {file_path}") from e
 
+
+model = init_chat_model(f"google_genai:{GEMINI_MODEL}", api_key=gemini_api_key)
 
 system_prompt = load_system_prompt(PROMPT_VERSION)
 
@@ -247,8 +261,12 @@ demo = gr.Interface(
     inputs=gr.Textbox(lines=2, placeholder="Ask a question about AI in Science...", label="Query"),
     outputs=gr.Textbox(lines=10, placeholder="Response will appear here...", label="Response"),
     title="AI in Science Research Assistant",
-    description="Ask questions about the 'AI in Science' research paper or recent developments in AI.",
+    description=(
+        "Ask questions about the OECD 'Artificial Intelligence in Science' (2023) report, "
+        "or about recent AI developments not covered by it. Answers cite report page numbers."
+    ),
 )
 
 if __name__ == "__main__":
-    demo.launch()
+    running_on_spaces = os.getenv("SPACE_ID") is not None
+    demo.launch(share=not running_on_spaces, debug=not running_on_spaces)
