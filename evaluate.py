@@ -35,7 +35,7 @@ TARGET_FAITHFULNESS = 0.85
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 JUDGE_MODEL = init_chat_model(
-    "google_genai:gemini-2.5-flash-lite",
+    "google_genai:gemini-3.5-flash-lite",
     api_key=gemini_api_key,
     response_mime_type="application/json",
 )
