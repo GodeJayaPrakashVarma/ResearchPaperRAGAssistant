@@ -4,15 +4,17 @@ evaluate.py
 Offline evaluation over the (manually verified) golden dataset, measuring:
   - Retrieval Hit Rate: did the retriever return the expected source chunk?
   - Faithfulness: is the actual agent's answer fully supported by what was retrieved?
+  - Tool-Routing Failure Rate: did the agent skip retrieve_from_pdf entirely?
 
-Generation is routed through the real ask() from app.py -- the same agent, tools, and
-system prompt version real users get -- rather than a separate ad hoc prompt, so this
+Generation is routed through the real ask_with_sources() from app.py -- the same
+agent, tools, and system prompt version real users get, capturing what the agent
+ACTUALLY retrieved -- rather than a separately recomputed retrieval call, so this
 number reflects the pipeline you actually ship, prompt-version changes included.
 
 JSON parsing note: the faithfulness judge uses Gemini's native JSON mode
 (response_mime_type="application/json"), a plain constructor kwarg -- not pydantic.
 The model API itself is constrained to emit valid JSON, so plain json.loads() on the
-response is enough.
+response is enough (after normalizing str-vs-list content shape, see _extract_text).
 
 Meant to run in CI against a golden_dataset.json that's already committed and
 human-verified. Does NOT regenerate the golden set (see generate_golden_dataset.py).
@@ -25,7 +27,7 @@ import sys
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
 
-from app import final_retriever, chunk_id, ask_with_sources, PROMPT_VERSION
+from app import retrieve_and_rerank, chunk_id, ask_with_sources, PROMPT_VERSION
 
 load_dotenv()
 
@@ -33,9 +35,10 @@ GOLDEN_FILE = "golden_dataset.json"
 TARGET_FAITHFULNESS = 0.85
 
 gemini_api_key = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
 JUDGE_MODEL = init_chat_model(
-    "google_genai:gemini-3.5-flash-lite",
+    f"google_genai:{GEMINI_MODEL}",
     api_key=gemini_api_key,
     response_mime_type="application/json",
 )
@@ -89,7 +92,11 @@ def run_evaluation(golden_file: str = GOLDEN_FILE, target_faithfulness: float = 
     with open(golden_file, "r") as f:
         golden_set = json.load(f)
 
-    eval_limit = 15 # how many questions and answers to evaluate from golden dataset
+    # Optional cap so you can smoke-test the harness itself on a couple of items
+    # without spending the full golden set's worth of Gemini calls. Unset (the
+    # default) means run everything -- including CI, where a partial run would
+    # silently weaken the regression gate without anyone noticing.
+    eval_limit = os.getenv("EVAL_LIMIT")
     if eval_limit:
         golden_set = golden_set[: int(eval_limit)]
         print(f"EVAL_LIMIT set -- running on {len(golden_set)} item(s) only.\n")
@@ -100,9 +107,10 @@ def run_evaluation(golden_file: str = GOLDEN_FILE, target_faithfulness: float = 
               f"(e.g. {unverified[:5]}). Faithfulness numbers below are only as "
               f"trustworthy as this dataset.\n")
 
-    retrieval_hits = 0 # how many chunks that are correctly retrieved
-    faithfulness_passes = 0 # how many answers that are judged faithful to the retrieved context
-    tool_routing_failures = 0  # agent never called retrieve_from_pdf at all -- a different problem than hallucinating despite good context
+    retrieval_hits = 0  # how many chunks that are correctly retrieved
+    faithfulness_passes = 0  # how many answers judged faithful to the retrieved context
+    tool_routing_failures = 0  # agent never called retrieve_from_pdf at all -- a
+                                # different problem than hallucinating despite good context
     total = len(golden_set)
     item_results = []  # per-item detail -- the aggregate score alone can't tell you WHY
 
@@ -115,7 +123,7 @@ def run_evaluation(golden_file: str = GOLDEN_FILE, target_faithfulness: float = 
         # 1. Retrieval, tested directly against the retriever in isolation (this
         #    measures retriever quality independent of whether the agent even
         #    decides to use it).
-        retrieved_docs = final_retriever.invoke(q)
+        retrieved_docs = retrieve_and_rerank(q)
         retrieved_chunk_ids = [chunk_id(doc) for doc in retrieved_docs]
         hit = expected_chunk_id in retrieved_chunk_ids
         if hit:
@@ -154,13 +162,12 @@ def run_evaluation(golden_file: str = GOLDEN_FILE, target_faithfulness: float = 
 
         # Print failures inline as they happen -- don't make yourself wait for the
         # full run to finish before seeing what's actually going wrong.
-        if False:
-            if not hit or not passed:
-                print(f"[{item['id']}] hit={hit} tool_called={called_pdf_tool} faithful={passed}")
-                print(f"  Q: {q}")
-                if not passed:
-                    print(f"  Judge: {verdict.get('reasoning', '(no reasoning returned)')}")
-                print()
+        if not hit or not passed:
+            print(f"[{item['id']}] hit={hit} tool_called={called_pdf_tool} faithful={passed}")
+            print(f"  Q: {q}")
+            if not passed:
+                print(f"  Judge: {verdict.get('reasoning', '(no reasoning returned)')}")
+            print()
 
     hit_rate = retrieval_hits / total if total else 0
     faithfulness_score = faithfulness_passes / total if total else 0
