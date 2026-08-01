@@ -162,12 +162,12 @@ def run_evaluation(golden_file: str = GOLDEN_FILE, target_faithfulness: float = 
 
         # Print failures inline as they happen -- don't make yourself wait for the
         # full run to finish before seeing what's actually going wrong.
-        if not hit or not passed:
+        """if not hit or not passed:
             print(f"[{item['id']}] hit={hit} tool_called={called_pdf_tool} faithful={passed}")
             print(f"  Q: {q}")
             if not passed:
                 print(f"  Judge: {verdict.get('reasoning', '(no reasoning returned)')}")
-            print()
+            print()"""
 
     hit_rate = retrieval_hits / total if total else 0
     faithfulness_score = faithfulness_passes / total if total else 0
