@@ -6,7 +6,7 @@ report doesn't cover.
 
 ## Problem
 
-Long technical/policy reports are hard to query directly — answers are buried across
+Long technical reports are hard to query directly — answers are buried across
 hundreds of pages, and generic chat models will happily hallucinate an answer instead of
 admitting they don't know. This assistant retrieves the actual supporting passages before
 answering, cites the page number for every claim, and explicitly says so when it can't
@@ -14,8 +14,7 @@ find support in the report.
 
 ## Live demo
 
-- **Try it**: _[Hugging Face Spaces link — add once deployed]_
-- **Source**: this repo
+- **Try it**: https://huggingface.co/spaces/JayaPrakashVarma/ResearchPaperRAGAssistant
 
 ## Architecture
 
