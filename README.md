@@ -52,7 +52,7 @@ index is rebuilt from those same stored chunks — one source of truth, two retr
       hit-rate + faithfulness scoring (judged against what the agent actually
       retrieved, not a separately recomputed approximation), wired into CI as a
       merge gate
-- [ ] **Next** — Deploy to Hugging Face Spaces for a permanent live demo link
+- [x] **Phase 4** — Deploy to Hugging Face Spaces for a permanent live demo link
 
 ## Setup
 
